@@ -2,5 +2,20 @@
 name = "lang-types"
 version = "0.1.0"
 edition = "2021"
+build = "build.rs"
+description = "Type-safe programming language identification and file extension mapping"
+license = "MIT"
+repository = "https://github.com/eddiesankey/lang-types"
+documentation = "https://docs.rs/lang-types"
+keywords = ["language", "programming", "extension", "file-type"]
+categories = ["development-tools", "parser-implementations"]
+
+[features]
+serde = ["dep:serde"]
 
 [dependencies]
+serde = { version = "1.0", optional = true, features = ["derive"] }
+
+[build-dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"

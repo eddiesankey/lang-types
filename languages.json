@@ -1,0 +1,96 @@
+[
+  {
+    "name": "Python",
+    "extensions": [".py", ".pyi", ".pyc", ".pyw", ".pyx"],
+    "aliases": ["py", "python3"]
+  },
+  {
+    "name": "JavaScript",
+    "extensions": [".js", ".mjs", ".cjs", ".jsx"],
+    "aliases": ["js", "node", "nodejs"]
+  },
+  {
+    "name": "TypeScript",
+    "extensions": [".ts", ".tsx"],
+    "aliases": ["ts"]
+  },
+  {
+    "name": "Java",
+    "extensions": [".java", ".class", ".jar"],
+    "aliases": []
+  },
+  {
+    "name": "C++",
+    "enum_name": "Cpp",
+    "extensions": [".cpp", ".cc", ".cxx", ".hpp", ".hh", ".h++", ".hxx"],
+    "aliases": ["cpp", "cxx"]
+  },
+  {
+    "name": "C#",
+    "enum_name": "CSharp",
+    "extensions": [".cs", ".csx"],
+    "aliases": ["csharp", "cs"]
+  },
+  {
+    "name": "Rust",
+    "extensions": [".rs"],
+    "aliases": []
+  },
+  {
+    "name": "Go",
+    "extensions": [".go"],
+    "aliases": ["golang"]
+  },
+  {
+    "name": "Ruby",
+    "extensions": [".rb", ".rake", ".gemspec"],
+    "aliases": []
+  },
+  {
+    "name": "PHP",
+    "enum_name": "Php",
+    "extensions": [".php", ".php3", ".php4", ".php5", ".phtml"],
+    "aliases": []
+  },
+  {
+    "name": "Swift",
+    "extensions": [".swift"],
+    "aliases": []
+  },
+  {
+    "name": "Kotlin",
+    "extensions": [".kt", ".kts"],
+    "aliases": []
+  },
+  {
+    "name": "C",
+    "extensions": [".c", ".h"],
+    "aliases": []
+  },
+  {
+    "name": "R",
+    "extensions": [".r", ".R", ".Rmd"],
+    "aliases": []
+  },
+  {
+    "name": "Scala",
+    "extensions": [".scala", ".sc"],
+    "aliases": []
+  },
+  {
+    "name": "Dart",
+    "extensions": [".dart"],
+    "aliases": []
+  },
+  {
+    "name": "HTML",
+    "enum_name": "Html",
+    "extensions": [".html", ".htm", ".xhtml"],
+    "aliases": []
+  },
+  {
+    "name": "Shell",
+    "extensions": [".sh", ".bash"],
+    "aliases": ["bash", "sh"]
+  }
+]
