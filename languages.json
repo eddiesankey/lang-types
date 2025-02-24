@@ -92,5 +92,51 @@
     "name": "Shell",
     "extensions": [".sh", ".bash"],
     "aliases": ["bash", "sh"]
+  },
+  {
+    "name": "Julia",
+    "extensions": [".jl"],
+    "aliases": ["julia-lang"]
+  },
+  {
+    "name": "Lua",
+    "extensions": [".lua", ".luau"],
+    "aliases": ["lua-lang"]
+  },
+  {
+    "name": "Perl",
+    "extensions": [".pl", ".pm", ".t", ".pod"],
+    "aliases": ["pl", "perl5", "perl6"]
+  },
+  {
+    "name": "Haskell",
+    "extensions": [".hs", ".lhs", ".hsc"],
+    "aliases": ["hs"]
+  },
+  {
+    "name": "Elixir",
+    "extensions": [".ex", ".exs"],
+    "aliases": ["ex"]
+  },
+  {
+    "name": "Clojure",
+    "extensions": [".clj", ".cljs", ".cljc", ".edn"],
+    "aliases": ["clj"]
+  },
+  {
+    "name": "Erlang",
+    "extensions": [".erl", ".hrl"],
+    "aliases": ["erl"]
+  },
+  {
+    "name": "OCaml",
+    "enum_name": "OCaml",
+    "extensions": [".ml", ".mli", ".mll", ".mly"],
+    "aliases": ["ml"]
+  },
+  {
+    "name": "Zig",
+    "extensions": [".zig"],
+    "aliases": ["zig-lang"]
   }
 ]

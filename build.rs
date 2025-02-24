@@ -163,8 +163,11 @@ fn generate_code(languages: &[Language]) -> String {
 fn main() {
     let json_str = fs::read_to_string("languages.json").expect("Failed to read languages.json");
 
-    let languages: Vec<Language> =
+    let mut languages: Vec<Language> =
         serde_json::from_str(&json_str).expect("Failed to parse languages.json");
+
+    // sort by alphabetical order
+    languages.sort_by(|a, b| a.name.cmp(&b.name));
 
     let generated_code = generate_code(&languages);
 

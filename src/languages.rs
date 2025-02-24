@@ -16,42 +16,41 @@ use std::fmt;
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub enum Language {
-    Python,
-    JavaScript,
-    TypeScript,
-    Java,
-    Cpp,
-    CSharp,
-    Rust,
-    Go,
-    Ruby,
-    Php,
-    Swift,
-    Kotlin,
     C,
-    R,
-    Scala,
+    CSharp,
+    Cpp,
+    Clojure,
     Dart,
+    Elixir,
+    Erlang,
+    Go,
     Html,
+    Haskell,
+    Java,
+    JavaScript,
+    Julia,
+    Kotlin,
+    Lua,
+    OCaml,
+    Php,
+    Perl,
+    Python,
+    R,
+    Ruby,
+    Rust,
+    Scala,
     Shell,
+    Swift,
+    TypeScript,
+    Zig,
 }
 
 static EXTENSION_MAP: LazyLock<HashMap<&'static str, Language>> = LazyLock::new(|| {
     let mut m = HashMap::new();
-    m.insert("py", Language::Python);
-    m.insert("pyi", Language::Python);
-    m.insert("pyc", Language::Python);
-    m.insert("pyw", Language::Python);
-    m.insert("pyx", Language::Python);
-    m.insert("js", Language::JavaScript);
-    m.insert("mjs", Language::JavaScript);
-    m.insert("cjs", Language::JavaScript);
-    m.insert("jsx", Language::JavaScript);
-    m.insert("ts", Language::TypeScript);
-    m.insert("tsx", Language::TypeScript);
-    m.insert("java", Language::Java);
-    m.insert("class", Language::Java);
-    m.insert("jar", Language::Java);
+    m.insert("c", Language::C);
+    m.insert("h", Language::C);
+    m.insert("cs", Language::CSharp);
+    m.insert("csx", Language::CSharp);
     m.insert("cpp", Language::Cpp);
     m.insert("cc", Language::Cpp);
     m.insert("cxx", Language::Cpp);
@@ -59,70 +58,123 @@ static EXTENSION_MAP: LazyLock<HashMap<&'static str, Language>> = LazyLock::new(
     m.insert("hh", Language::Cpp);
     m.insert("h++", Language::Cpp);
     m.insert("hxx", Language::Cpp);
-    m.insert("cs", Language::CSharp);
-    m.insert("csx", Language::CSharp);
-    m.insert("rs", Language::Rust);
+    m.insert("clj", Language::Clojure);
+    m.insert("cljs", Language::Clojure);
+    m.insert("cljc", Language::Clojure);
+    m.insert("edn", Language::Clojure);
+    m.insert("dart", Language::Dart);
+    m.insert("ex", Language::Elixir);
+    m.insert("exs", Language::Elixir);
+    m.insert("erl", Language::Erlang);
+    m.insert("hrl", Language::Erlang);
     m.insert("go", Language::Go);
-    m.insert("rb", Language::Ruby);
-    m.insert("rake", Language::Ruby);
-    m.insert("gemspec", Language::Ruby);
+    m.insert("html", Language::Html);
+    m.insert("htm", Language::Html);
+    m.insert("xhtml", Language::Html);
+    m.insert("hs", Language::Haskell);
+    m.insert("lhs", Language::Haskell);
+    m.insert("hsc", Language::Haskell);
+    m.insert("java", Language::Java);
+    m.insert("class", Language::Java);
+    m.insert("jar", Language::Java);
+    m.insert("js", Language::JavaScript);
+    m.insert("mjs", Language::JavaScript);
+    m.insert("cjs", Language::JavaScript);
+    m.insert("jsx", Language::JavaScript);
+    m.insert("jl", Language::Julia);
+    m.insert("kt", Language::Kotlin);
+    m.insert("kts", Language::Kotlin);
+    m.insert("lua", Language::Lua);
+    m.insert("luau", Language::Lua);
+    m.insert("ml", Language::OCaml);
+    m.insert("mli", Language::OCaml);
+    m.insert("mll", Language::OCaml);
+    m.insert("mly", Language::OCaml);
     m.insert("php", Language::Php);
     m.insert("php3", Language::Php);
     m.insert("php4", Language::Php);
     m.insert("php5", Language::Php);
     m.insert("phtml", Language::Php);
-    m.insert("swift", Language::Swift);
-    m.insert("kt", Language::Kotlin);
-    m.insert("kts", Language::Kotlin);
-    m.insert("c", Language::C);
-    m.insert("h", Language::C);
+    m.insert("pl", Language::Perl);
+    m.insert("pm", Language::Perl);
+    m.insert("t", Language::Perl);
+    m.insert("pod", Language::Perl);
+    m.insert("py", Language::Python);
+    m.insert("pyi", Language::Python);
+    m.insert("pyc", Language::Python);
+    m.insert("pyw", Language::Python);
+    m.insert("pyx", Language::Python);
     m.insert("r", Language::R);
     m.insert("R", Language::R);
     m.insert("Rmd", Language::R);
+    m.insert("rb", Language::Ruby);
+    m.insert("rake", Language::Ruby);
+    m.insert("gemspec", Language::Ruby);
+    m.insert("rs", Language::Rust);
     m.insert("scala", Language::Scala);
     m.insert("sc", Language::Scala);
-    m.insert("dart", Language::Dart);
-    m.insert("html", Language::Html);
-    m.insert("htm", Language::Html);
-    m.insert("xhtml", Language::Html);
     m.insert("sh", Language::Shell);
     m.insert("bash", Language::Shell);
+    m.insert("swift", Language::Swift);
+    m.insert("ts", Language::TypeScript);
+    m.insert("tsx", Language::TypeScript);
+    m.insert("zig", Language::Zig);
     m
 });
 
 static NAME_MAP: LazyLock<HashMap<&'static str, Language>> = LazyLock::new(|| {
     let mut m = HashMap::new();
-    m.insert("python", Language::Python);
-    m.insert("py", Language::Python);
-    m.insert("python3", Language::Python);
+    m.insert("c", Language::C);
+    m.insert("c#", Language::CSharp);
+    m.insert("csharp", Language::CSharp);
+    m.insert("cs", Language::CSharp);
+    m.insert("c++", Language::Cpp);
+    m.insert("cpp", Language::Cpp);
+    m.insert("cxx", Language::Cpp);
+    m.insert("clojure", Language::Clojure);
+    m.insert("clj", Language::Clojure);
+    m.insert("dart", Language::Dart);
+    m.insert("elixir", Language::Elixir);
+    m.insert("ex", Language::Elixir);
+    m.insert("erlang", Language::Erlang);
+    m.insert("erl", Language::Erlang);
+    m.insert("go", Language::Go);
+    m.insert("golang", Language::Go);
+    m.insert("html", Language::Html);
+    m.insert("haskell", Language::Haskell);
+    m.insert("hs", Language::Haskell);
+    m.insert("java", Language::Java);
     m.insert("javascript", Language::JavaScript);
     m.insert("js", Language::JavaScript);
     m.insert("node", Language::JavaScript);
     m.insert("nodejs", Language::JavaScript);
-    m.insert("typescript", Language::TypeScript);
-    m.insert("ts", Language::TypeScript);
-    m.insert("java", Language::Java);
-    m.insert("c++", Language::Cpp);
-    m.insert("cpp", Language::Cpp);
-    m.insert("cxx", Language::Cpp);
-    m.insert("c#", Language::CSharp);
-    m.insert("csharp", Language::CSharp);
-    m.insert("cs", Language::CSharp);
-    m.insert("rust", Language::Rust);
-    m.insert("go", Language::Go);
-    m.insert("golang", Language::Go);
-    m.insert("ruby", Language::Ruby);
-    m.insert("php", Language::Php);
-    m.insert("swift", Language::Swift);
+    m.insert("julia", Language::Julia);
+    m.insert("julia-lang", Language::Julia);
     m.insert("kotlin", Language::Kotlin);
-    m.insert("c", Language::C);
+    m.insert("lua", Language::Lua);
+    m.insert("lua-lang", Language::Lua);
+    m.insert("ocaml", Language::OCaml);
+    m.insert("ml", Language::OCaml);
+    m.insert("php", Language::Php);
+    m.insert("perl", Language::Perl);
+    m.insert("pl", Language::Perl);
+    m.insert("perl5", Language::Perl);
+    m.insert("perl6", Language::Perl);
+    m.insert("python", Language::Python);
+    m.insert("py", Language::Python);
+    m.insert("python3", Language::Python);
     m.insert("r", Language::R);
+    m.insert("ruby", Language::Ruby);
+    m.insert("rust", Language::Rust);
     m.insert("scala", Language::Scala);
-    m.insert("dart", Language::Dart);
-    m.insert("html", Language::Html);
     m.insert("shell", Language::Shell);
     m.insert("bash", Language::Shell);
     m.insert("sh", Language::Shell);
+    m.insert("swift", Language::Swift);
+    m.insert("typescript", Language::TypeScript);
+    m.insert("ts", Language::TypeScript);
+    m.insert("zig", Language::Zig);
+    m.insert("zig-lang", Language::Zig);
     m
 });
 
@@ -138,24 +190,33 @@ impl Language {
 
     pub fn name(&self) -> &'static str {
         match self {
-            Language::Python => "Python",
-            Language::JavaScript => "JavaScript",
-            Language::TypeScript => "TypeScript",
-            Language::Java => "Java",
-            Language::Cpp => "C++",
-            Language::CSharp => "C#",
-            Language::Rust => "Rust",
-            Language::Go => "Go",
-            Language::Ruby => "Ruby",
-            Language::Php => "PHP",
-            Language::Swift => "Swift",
-            Language::Kotlin => "Kotlin",
             Language::C => "C",
-            Language::R => "R",
-            Language::Scala => "Scala",
+            Language::CSharp => "C#",
+            Language::Cpp => "C++",
+            Language::Clojure => "Clojure",
             Language::Dart => "Dart",
+            Language::Elixir => "Elixir",
+            Language::Erlang => "Erlang",
+            Language::Go => "Go",
             Language::Html => "HTML",
+            Language::Haskell => "Haskell",
+            Language::Java => "Java",
+            Language::JavaScript => "JavaScript",
+            Language::Julia => "Julia",
+            Language::Kotlin => "Kotlin",
+            Language::Lua => "Lua",
+            Language::OCaml => "OCaml",
+            Language::Php => "PHP",
+            Language::Perl => "Perl",
+            Language::Python => "Python",
+            Language::R => "R",
+            Language::Ruby => "Ruby",
+            Language::Rust => "Rust",
+            Language::Scala => "Scala",
             Language::Shell => "Shell",
+            Language::Swift => "Swift",
+            Language::TypeScript => "TypeScript",
+            Language::Zig => "Zig",
         }
     }
     pub fn extensions(&self) -> Vec<&'static str> {
@@ -165,24 +226,33 @@ impl Language {
     }
     pub fn all() -> &'static [Language] {
         static ALL: LazyLock<Vec<Language>> = LazyLock::new(|| vec![
-            Language::Python,
-            Language::JavaScript,
-            Language::TypeScript,
-            Language::Java,
-            Language::Cpp,
-            Language::CSharp,
-            Language::Rust,
-            Language::Go,
-            Language::Ruby,
-            Language::Php,
-            Language::Swift,
-            Language::Kotlin,
             Language::C,
-            Language::R,
-            Language::Scala,
+            Language::CSharp,
+            Language::Cpp,
+            Language::Clojure,
             Language::Dart,
+            Language::Elixir,
+            Language::Erlang,
+            Language::Go,
             Language::Html,
+            Language::Haskell,
+            Language::Java,
+            Language::JavaScript,
+            Language::Julia,
+            Language::Kotlin,
+            Language::Lua,
+            Language::OCaml,
+            Language::Php,
+            Language::Perl,
+            Language::Python,
+            Language::R,
+            Language::Ruby,
+            Language::Rust,
+            Language::Scala,
             Language::Shell,
+            Language::Swift,
+            Language::TypeScript,
+            Language::Zig,
         ]);
         &ALL
     }
