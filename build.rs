@@ -26,7 +26,7 @@ fn generate_code(languages: &[Language]) -> String {
     let mut code = String::new();
 
     code.push_str(LIB_DOC);
-    code.push_str("\n");
+    code.push('\n');
 
     // imports
     code.push_str("use std::collections::HashMap;\n");
