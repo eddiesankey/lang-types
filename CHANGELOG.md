@@ -1,0 +1,6 @@
+- 0.1.0
+  - Initial release
+  - Support for common programming languages
+  - File extension detection
+  - Language name and alias lookup
+  - Optional serde support
