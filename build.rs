@@ -1,6 +1,5 @@
 use serde::{Deserialize, Serialize};
 use std::fs;
-use std::path::Path;
 
 const LIB_DOC: &str = r#"//! A crate for working with programming language types and file extensions.
 //!
@@ -171,8 +170,15 @@ fn main() {
 
     let generated_code = generate_code(&languages);
 
-    let dest_path = Path::new("src").join("languages.rs");
-    fs::write(&dest_path, generated_code).unwrap();
+    let needs_generation = match fs::read_to_string("src/languages.rs") {
+        Ok(existing_code) => existing_code != generated_code,
+        Err(_) => true,
+    };
+
+    // Only write code if there is a difference
+    if needs_generation {
+        fs::write("src/languages.rs", generated_code).expect("Failed to write src/languages.rs");
+    }
 
     println!("cargo:rerun-if-changed=languages.json");
 }

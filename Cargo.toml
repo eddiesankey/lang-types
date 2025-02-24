@@ -8,7 +8,7 @@ license = "MIT"
 repository = "https://github.com/eddiesankey/lang-types"
 documentation = "https://docs.rs/lang-types"
 keywords = ["language", "programming", "extension", "file-type"]
-categories = ["development-tools", "parser-implementations"]
+categories = ["development-tools", "parsing"]
 
 [features]
 serde = ["dep:serde"]
