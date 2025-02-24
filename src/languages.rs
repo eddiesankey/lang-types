@@ -6,8 +6,8 @@
 use std::collections::HashMap;
 use std::sync::LazyLock;
 
-use std::str::FromStr;
 use std::fmt;
+use std::str::FromStr;
 
 /// Represents a programming language.
 ///
@@ -220,43 +220,45 @@ impl Language {
         }
     }
     pub fn extensions(&self) -> Vec<&'static str> {
-        EXTENSION_MAP.iter()
+        EXTENSION_MAP
+            .iter()
             .filter_map(|(ext, lang)| if lang == self { Some(*ext) } else { None })
             .collect()
     }
     pub fn all() -> &'static [Language] {
-        static ALL: LazyLock<Vec<Language>> = LazyLock::new(|| vec![
-            Language::C,
-            Language::CSharp,
-            Language::Cpp,
-            Language::Clojure,
-            Language::Dart,
-            Language::Elixir,
-            Language::Erlang,
-            Language::Go,
-            Language::Html,
-            Language::Haskell,
-            Language::Java,
-            Language::JavaScript,
-            Language::Julia,
-            Language::Kotlin,
-            Language::Lua,
-            Language::OCaml,
-            Language::Php,
-            Language::Perl,
-            Language::Python,
-            Language::R,
-            Language::Ruby,
-            Language::Rust,
-            Language::Scala,
-            Language::Shell,
-            Language::Swift,
-            Language::TypeScript,
-            Language::Zig,
-        ]);
+        static ALL: LazyLock<Vec<Language>> = LazyLock::new(|| {
+            vec![
+                Language::C,
+                Language::CSharp,
+                Language::Cpp,
+                Language::Clojure,
+                Language::Dart,
+                Language::Elixir,
+                Language::Erlang,
+                Language::Go,
+                Language::Html,
+                Language::Haskell,
+                Language::Java,
+                Language::JavaScript,
+                Language::Julia,
+                Language::Kotlin,
+                Language::Lua,
+                Language::OCaml,
+                Language::Php,
+                Language::Perl,
+                Language::Python,
+                Language::R,
+                Language::Ruby,
+                Language::Rust,
+                Language::Scala,
+                Language::Shell,
+                Language::Swift,
+                Language::TypeScript,
+                Language::Zig,
+            ]
+        });
         &ALL
     }
-
 }
 impl fmt::Display for Language {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
