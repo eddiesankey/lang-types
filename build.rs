@@ -1,5 +1,6 @@
 use serde::{Deserialize, Serialize};
 use std::fs;
+use syn::parse_file;
 
 const LIB_DOC: &str = r#"//! A crate for working with programming language types and file extensions.
 //!
@@ -170,6 +171,9 @@ fn main() {
 
     let generated_code = generate_code(&languages);
 
+    let syntax_tree = parse_file(&generated_code).expect("Failed to parse generated code");
+    let formatted_code = prettyplease::unparse(&syntax_tree);
+
     let needs_generation = match fs::read_to_string("src/languages.rs") {
         Ok(existing_code) => existing_code != generated_code,
         Err(_) => true,
@@ -177,7 +181,7 @@ fn main() {
 
     // Only write code if there is a difference
     if needs_generation {
-        fs::write("src/languages.rs", generated_code).expect("Failed to write src/languages.rs");
+        fs::write("src/languages.rs", formatted_code).expect("Failed to write src/languages.rs");
     }
 
     println!("cargo:rerun-if-changed=languages.json");
