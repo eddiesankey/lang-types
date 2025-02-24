@@ -1,6 +1,7 @@
-[![Crates.io](https://img.shields.io/crates/v/lang-types)](https://crates.io/crates/lang-types)
-[![Documentation](https://docs.rs/lang-types/badge.svg)](https://docs.rs/lang-types)
-[![Build Status](https://github.com/{username}/lang-types/workflows/CI/badge.svg)](https://github.com/eddiesankey/lang-types/actions)
+[<img alt="github" src="https://img.shields.io/badge/github-eddiesankey/lang--types-8da0cb?style=for-the-badge&labelColor=555555&logo=github" height="20">](https://github.com/eddiesankey/lang-types)
+[<img alt="crates.io" src="https://img.shields.io/crates/v/lang-types.svg?style=for-the-badge&color=fc8d62&logo=rust" height="20">](https://crates.io/crates/lang-types)
+[<img alt="docs.rs" src="https://img.shields.io/badge/docs.rs-lang--types-66c2a5?style=for-the-badge&labelColor=555555&logo=docs.rs" height="20">](https://docs.rs/lang-types)
+[<img alt="build status" src="https://img.shields.io/github/actions/workflow/status/eddiesankey/lang-types/ci.yml?branch=main&style=for-the-badge" height="20">](https://github.com/eddiesankey/lang-types/actions?query=branch%3Amain)
 
 # lang-types
 This crate provides the Language enum for programming language identification and file extension mapping.
